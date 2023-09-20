@@ -8,7 +8,7 @@ export function AppHeader() {
                 <NavLink to="/toy">Toys</NavLink> |
                 <NavLink to="/about">About</NavLink> |
             </nav>
-            <h1>My App</h1>
+            <h1>Mister Toys</h1>
         </header>
     )
 }

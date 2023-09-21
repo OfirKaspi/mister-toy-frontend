@@ -1,11 +1,11 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-// import { utilService } from './util.service.js'
-// import { userService } from './user.service.js'
+import { httpService } from './http.service.js'
 
+const BASE_URL = 'toy/'
 const STORAGE_KEY = 'toyDB'
 
-_createToys()
+// _createToys()
 
 export const toyService = {
     query,
@@ -18,45 +18,29 @@ export const toyService = {
 }
 
 function query(filterBy = {}) {
-
-    if (filterBy.inStock === '') delete filterBy.inStock
-    if (!filterBy.name) filterBy.name = ''
-    if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
-    const regExp = new RegExp(filterBy.name, 'i')
-
-    return storageService.query(STORAGE_KEY)
-        .then(toys => {
-            return toys.filter(toy =>
-                regExp.test(toy.name) &&
-                toy.price <= filterBy.maxPrice &&
-                (filterBy.inStock === undefined || String(toy.inStock) === filterBy.inStock)
-            )
-        })
+    return httpService.get(BASE_URL, filterBy)
 }
 
 function getById(toyId) {
-    return storageService.get(STORAGE_KEY, toyId)
+    return httpService.get(BASE_URL + toyId)
 }
 
 function remove(toyId) {
-    // return Promise.reject('Oh no!')
-    return storageService.remove(STORAGE_KEY, toyId)
+    return httpService.delete(BASE_URL + toyId)
 }
 
 function save(toy) {
     if (toy._id) {
-        return storageService.put(STORAGE_KEY, toy)
+        return httpService.put(BASE_URL, toy)
     } else {
-        // when switching to backend - remove the next line
-        // toy.owner = userService.getLoggedinUser()
-        return storageService.post(STORAGE_KEY, toy)
+        return httpService.post(BASE_URL, toy)
     }
 }
 
 function getEmptyToy() {
     return {
         // need to add a promt or modal to add name
-        name: 'Talking Doll',
+        name: 'Talking Doll-' + (Date.now() % 1000),
         price: utilService.getRandomIntInclusive(100, 1000),
         // need to make a function to make it random labels
         labels: ['Doll', 'Battery Powered', 'Baby'],
@@ -65,48 +49,6 @@ function getEmptyToy() {
     }
 }
 
-function _createToys() {
-    let toys = utilService.loadFromStorage(STORAGE_KEY)
-    if (!toys || !toys.length) {
-        toys = [
-            {
-                _id: utilService.makeId(),
-                name: 'Buzz Lightyear',
-                price: utilService.getRandomIntInclusive(100, 1000),
-                labels: ['Doll', 'Battery Powered', 'Baby'],
-                createdAt: Date.now(),
-                inStock: false,
-            },
-            {
-                _id: utilService.makeId(),
-                name: 'Kobi Kobi',
-                price: utilService.getRandomIntInclusive(100, 1000),
-                labels: ['Outdoor', 'Art', 'Baby'],
-                createdAt: Date.now(),
-                inStock: true,
-            },
-            {
-                _id: utilService.makeId(),
-                name: 'Luka Doncic',
-                price: utilService.getRandomIntInclusive(100, 1000),
-                labels: ['Doll', 'Puzzle', 'Baby'],
-                createdAt: Date.now(),
-                inStock: true,
-            },
-            {
-                _id: utilService.makeId(),
-                name: 'Cristiano Ronaldo',
-                price: utilService.getRandomIntInclusive(100, 1000),
-                labels: ['Box game', 'Battery Powered', 'Art'],
-                createdAt: Date.now(),
-                inStock: false,
-            }
-        ]
-        utilService.saveToStorage(STORAGE_KEY, toys)
-    }
-}
-
-
 function getDefaultFilter() {
     return { name: '', maxPrice: '', inStock: '', lables: [] }
 }
@@ -114,8 +56,3 @@ function getDefaultFilter() {
 function getLabels() {
     return ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered']
 }
-
-// TEST DATA
-// storageService.post(STORAGE_KEY, {vendor: 'Subali Rahok 6', price: 980}).then(x => console.log(x))
-
-

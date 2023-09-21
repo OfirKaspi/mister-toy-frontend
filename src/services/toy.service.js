@@ -13,11 +13,13 @@ export const toyService = {
     save,
     remove,
     getEmptyToy,
-    getDefaultFilter
+    getDefaultFilter,
+    getLabels
 }
 
 function query(filterBy = {}) {
 
+    if (filterBy.inStock === '') delete filterBy.inStock
     if (!filterBy.name) filterBy.name = ''
     if (!filterBy.maxPrice) filterBy.maxPrice = Infinity
     const regExp = new RegExp(filterBy.name, 'i')
@@ -26,7 +28,8 @@ function query(filterBy = {}) {
         .then(toys => {
             return toys.filter(toy =>
                 regExp.test(toy.name) &&
-                toy.price <= filterBy.maxPrice
+                toy.price <= filterBy.maxPrice &&
+                (filterBy.inStock === undefined || String(toy.inStock) === filterBy.inStock)
             )
         })
 }
@@ -105,7 +108,11 @@ function _createToys() {
 
 
 function getDefaultFilter() {
-    return { name: '', maxPrice: '' }
+    return { name: '', maxPrice: '', inStock: '', lables: [] }
+}
+
+function getLabels() {
+    return ['On wheels', 'Box game', 'Art', 'Baby', 'Doll', 'Puzzle', 'Outdoor', 'Battery Powered']
 }
 
 // TEST DATA

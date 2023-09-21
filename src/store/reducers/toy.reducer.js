@@ -7,6 +7,7 @@ export const UPDATE_TOY = 'UPDATE_TOY'
 
 export const CHANGE_BY = 'CHANGE_BY'
 
+export const SET_SORT_BY = 'SET_SORT_BY'
 export const SET_FILTER_BY = 'SET_FILTER_BY'
 export const SET_IS_LOADING = 'SET_IS_LOADING'
 
@@ -15,7 +16,8 @@ const initialState = {
     toys: [],
     count: 101,
     filterBy: toyService.getDefaultFilter(),
-    isLoading: false
+    isLoading: false,
+    sortBy: ''
 }
 
 export function toyReducer(state = initialState, action = {}) {
@@ -28,22 +30,25 @@ export function toyReducer(state = initialState, action = {}) {
 
         // Toys
         case SET_TOYS:
-            return { ...state, toys: action.toys}
+            return { ...state, toys: action.toys }
 
         case REMOVE_TOY:
             toys = state.toys.filter(toy => toy._id !== action.toyId)
-            return { ...state, toys}
+            return { ...state, toys }
 
         case ADD_TOY:
             toys = [...state.toys, action.toy]
-            return { ...state, toys}
-            
+            return { ...state, toys }
+
         case UPDATE_TOY:
             toys = state.toys.map(toy => toy._id === action.toy._id ? action.toy : toy)
-            return { ...state, toys}
+            return { ...state, toys }
 
         case SET_FILTER_BY:
-            return { ...state, filterBy: {...action.filterBy} }
+            return { ...state, filterBy: { ...action.filterBy } }
+
+        case SET_SORT_BY:
+            return { ...state, sortBy: action.sortBy }
 
         case SET_IS_LOADING:
             return { ...state, isLoading: action.isLoading }

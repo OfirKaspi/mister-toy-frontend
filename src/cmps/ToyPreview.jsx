@@ -8,7 +8,6 @@ export function ToyPreview({ toy }) {
             <p>In Stock : <span>{toy.inStock.toLocaleString()}</span></p>
             <p>{toy.labels.map((label, idx) => (
                 <span key={idx}>| {label} |</span>
-
             ))}</p>
             <hr />
             <Link to={`/toy/${toy._id}`}>Details</Link>

@@ -6,7 +6,8 @@ export const utilService = {
     saveToStorage,
     animateCSS,
     debounce,
-    getAssetSrc
+    getAssetSrc,
+    formatDateFromTimestamp
 }
 
 function makeId(length = 6) {
@@ -80,4 +81,10 @@ function getAssetSrc(name) {
     const modules = import.meta.globEager('/src/assets/img/*')
     const mod = modules[path]
     return mod.default
+}
+
+function formatDateFromTimestamp(timestamp) {
+    const date = new Date(timestamp);
+    const formattedDate = date.toLocaleDateString("en-GB");
+    return formattedDate;
 }

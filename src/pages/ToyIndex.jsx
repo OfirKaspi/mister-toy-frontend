@@ -78,11 +78,12 @@ export function ToyIndex() {
     }
 
     return (
-        <div>
-            <main>
-                <button onClick={onAddToy}>Add Toy</button>
+        <div className='flex'>
+            <aside>
+                <button className='add-toy' onClick={onAddToy}>Add Toy</button>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} onSetSort={onSetSort} />
-
+            </aside>
+            <main>
                 {!isLoading && <ToyList
                     toys={toys}
                     onRemoveToy={onRemoveToy}
@@ -93,7 +94,6 @@ export function ToyIndex() {
                 }
 
                 {isLoading && <div>Loading...</div>}
-                <hr />
                 {/* <pre>{JSON.stringify(cart, null, 2)}</pre> */}
             </main>
         </div>

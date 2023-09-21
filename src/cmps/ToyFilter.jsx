@@ -26,10 +26,10 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
     }
 
     return (
-        <section className="car-filter full main-layout">
-            <h2>Toys Filter</h2>
-            <form >
-                <label htmlFor="name">Name:</label>
+        <section className="toy-filter">
+            <h2 className="flex justify-center">Filtering</h2>
+            <div className="filter-container flex align-center flex-column">
+                <label htmlFor="name">Search for something ?</label>
                 <input type="text"
                     id="name"
                     name="name"
@@ -37,7 +37,8 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
                     value={filterByToEdit.title}
                     onChange={handleChange}
                 />
-                <br />
+            </div>
+            <div className="filter-container flex align-center flex-column">
                 <label htmlFor="maxPrice">Max price:</label>
                 <input type="number"
                     id="maxPrice"
@@ -46,7 +47,8 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
                     value={filterByToEdit.maxPrice}
                     onChange={handleChange}
                 />
-                <br />
+            </div>
+            <div className="filter-container flex align-center flex-column">
                 <label htmlFor="inStock">In Stock:</label>
                 <select
                     id="inStock"
@@ -58,7 +60,8 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
                     <option value={"true"}>In Stock</option>
                     <option value={"false"}>Out of Stock</option>
                 </select>
-                <br />
+            </div>
+            <div className="filter-container flex align-center flex-column">
                 <label htmlFor="sortBy">Sort By:</label>
                 <select
                     id="sortBy"
@@ -69,7 +72,7 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
                     <option value="price">Price</option>
                     <option value="createdAt">Created At</option>
                 </select>
-            </form>
+            </div>
         </section>
     )
 }

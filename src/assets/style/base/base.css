@@ -1,34 +1,31 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-html {
-}
+html {}
 
 body {
-  margin: 0;
-  color: var(--gray3);
+    margin: 0;
+    color: var(--gray3);
+    background-color: #ebebeb;
 }
 
+p,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin: .5em 0 .5em;
-  font-family: 'Edu VIC WA NT Beginner', cursive;
-}
-
-p {
-  margin: 0 0 1em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: var(--clr3);
 }
 
 a {
-  text-decoration: none;
-  color: unset;
+    text-decoration: none;
+    color: unset;
+    color: var(--clr3);
 }
-
 
 
 /* Dont stretch my Media */
@@ -36,19 +33,17 @@ img,
 embed,
 video,
 object {
-  max-width: 100%
+    max-width: 100%
 }
 
 /* Simple and useful CSS Debugging Technique */
 .debug * {
-  outline: 1px solid gold
+    outline: 1px solid gold
 }
 
 a.active {
-  text-decoration: overline;
+    box-shadow: 0px 5px 0px var(--clr1);
 }
-
-
 
 .popup-menu {
     position: fixed;
@@ -65,6 +60,7 @@ a.active {
     margin: auto;
     height: fit-content;
 }
+
 .popup-menu h1 {
     font-size: 1.5em;
 }

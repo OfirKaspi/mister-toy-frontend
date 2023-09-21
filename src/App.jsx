@@ -1,4 +1,4 @@
-import {Route, HashRouter as Router, Routes} from 'react-router-dom' 
+import { Route, HashRouter as Router, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import './assets/style/main.css'
 
@@ -19,7 +19,7 @@ export function App() {
     return (
         <Provider store={store}>
             <Router>
-                <section className="main-layout app">
+                <section className="app">
                     <AppHeader />
                     <main>
                         <Routes>
@@ -32,7 +32,7 @@ export function App() {
                     <AppFooter />
                 </section>
             </Router>
-         </Provider>
+        </Provider>
     )
 }
 

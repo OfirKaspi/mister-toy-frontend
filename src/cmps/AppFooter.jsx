@@ -6,14 +6,16 @@ export function AppFooter() {
     const toysCount = useSelector(storeState => storeState.toyModule.toys.length)
 
     return (
-        <footer>
-            <h5>
-                Currently {toysCount} toys in the shop
-            </h5>
-            <p>
-                Coffeerights to Buzz Lightyear
-            </p>
+        <>
+            <footer className='flex justify-between align-center'>
+                <p>
+                    Currently <span className='toys-count'>{toysCount}</span> toys in the shop
+                </p>
+                <p>
+                    Coffeerights to Buzz Lightyear
+                </p>
+            </footer>
             <UserMsg />
-        </footer>
+        </>
     )
 }

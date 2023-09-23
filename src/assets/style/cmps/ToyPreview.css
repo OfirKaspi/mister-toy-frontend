@@ -1,0 +1,9 @@
+.label-span {
+    border-left: 1px solid gray;
+    padding: 0 5px;
+}
+
+.label-span:first-of-type {
+    border: none;
+    padding-inline-start: 0;
+}

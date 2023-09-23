@@ -1,4 +1,11 @@
 // TODO : add a dropdown multiselection
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import FormHelperText from '@mui/material/FormHelperText'
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
+import TextField from '@mui/material/TextField';
+import { InputAdornment } from '@mui/material'
 
 import { useEffect, useRef, useState } from "react"
 import { toyService } from "../services/toy.service.js"
@@ -7,6 +14,7 @@ import { utilService } from "../services/util.service.js"
 export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
+    const [sortBy, setSortBy] = useState('')
 
     onSetFilter = useRef(utilService.debounce(onSetFilter))
 
@@ -21,57 +29,74 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
     }
 
     function handleSortChange(event) {
-        const selectedSort = event.target.value;
-        onSetSort(selectedSort)
+        onSetSort(event.target.value)
+        setSortBy(event.target.value)
     }
 
     return (
         <section className="toy-filter">
             <h2 className="flex justify-center">Filtering</h2>
-            <div className="filter-container flex align-center flex-column">
-                <label htmlFor="name">Search for something ?</label>
-                <input type="text"
-                    id="name"
+
+            <div className="filter-container">
+                <TextField id="outlined-basic"
+                    label="Search"
                     name="name"
-                    placeholder="By name"
+                    variant="outlined"
                     value={filterByToEdit.title}
                     onChange={handleChange}
+                    helperText="Enter your desired toy"
                 />
             </div>
-            <div className="filter-container flex align-center flex-column">
-                <label htmlFor="maxPrice">Max price:</label>
-                <input type="number"
-                    id="maxPrice"
+
+            <div className="filter-container">
+                <TextField
+                    label="Max Price"
                     name="maxPrice"
-                    placeholder="By max price"
-                    value={filterByToEdit.maxPrice}
                     onChange={handleChange}
+                    InputProps={{
+                        startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                    }}
                 />
             </div>
-            <div className="filter-container flex align-center flex-column">
-                <label htmlFor="inStock">In Stock:</label>
-                <select
-                    id="inStock"
-                    name="inStock"
-                    value={filterByToEdit.inStock}
-                    onChange={handleChange}
-                >
-                    <option value="">All</option>
-                    <option value={"true"}>In Stock</option>
-                    <option value={"false"}>Out of Stock</option>
-                </select>
+
+            <div className="filter-container flex flex-column">
+                <FormControl>
+                    <InputLabel id="inStock">In Stock</InputLabel>
+                    <Select
+                        labelId="inStock"
+                        name="inStock"
+                        value={filterByToEdit.inStock}
+                        onChange={handleChange}
+                        autoWidth
+                        label="In Stock"
+                    >
+                        <MenuItem value="">
+                            <em>All</em>
+                        </MenuItem>
+                        <MenuItem value={"true"}>In Stock</MenuItem>
+                        <MenuItem value={"false"}>Out of Stock</MenuItem>
+                    </Select>
+                </FormControl>
             </div>
-            <div className="filter-container flex align-center flex-column">
-                <label htmlFor="sortBy">Sort By:</label>
-                <select
-                    id="sortBy"
-                    name="sortBy"
-                    onChange={handleSortChange}
-                >
-                    <option value="name">Name</option>
-                    <option value="price">Price</option>
-                    <option value="createdAt">Created At</option>
-                </select>
+
+            <div className="filter-container flex flex-column">
+                <FormControl>
+                    <InputLabel id="sortBy">Sort By</InputLabel>
+                    <Select
+                        labelId="sortBy"
+                        value={sortBy}
+                        onChange={handleSortChange}
+                        autoWidth
+                        label="Sort By"
+                    >
+                        <MenuItem value="">
+                            <em>None</em>
+                        </MenuItem>
+                        <MenuItem value="name">Name</MenuItem>
+                        <MenuItem value="price">Price</MenuItem>
+                        <MenuItem value="createdAt">Created At</MenuItem>
+                    </Select>
+                </FormControl>
             </div>
         </section>
     )

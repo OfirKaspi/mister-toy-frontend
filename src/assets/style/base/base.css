@@ -4,10 +4,24 @@
 
 html {}
 
+h1 {
+    font-size: 2rem;
+}
+
 body {
     margin: 0;
     color: var(--gray3);
     background-color: #ebebeb;
+}
+
+button {
+    background-color: var(--clr1);
+    font-weight: 800;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    color: var(--clr3);
+    cursor: pointer;
 }
 
 p,
@@ -19,6 +33,8 @@ h5,
 h6 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: var(--clr3);
+    margin: 0;
+    padding: 0;
 }
 
 a {

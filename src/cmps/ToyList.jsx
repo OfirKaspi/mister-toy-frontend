@@ -1,4 +1,5 @@
 import { ToyPreview } from "./ToyPreview.jsx"
+import { utilService } from '../services/util.service.js';
 
 export function ToyList({ toys, onRemoveToy, onEditToy, sortBy }) {
 
@@ -18,17 +19,13 @@ export function ToyList({ toys, onRemoveToy, onEditToy, sortBy }) {
     const sortedToys = [...toys].sort(compareToys);
 
     return (
-        <ul className="car-list">
+        <section className="toy-list">
             {sortedToys.map(toy =>
-                <li className="car-preview" key={toy._id}>
-                    <ToyPreview toy={toy} />
-                    <div>
-                        <button onClick={() => onRemoveToy(toy._id)}>x</button>
-                        <button onClick={() => onEditToy(toy)}>Edit</button>
-                    </div>
+                <article className="toy-preview" key={toy._id}>
+                    <ToyPreview toy={toy} onRemoveToy={onRemoveToy} onEditToy={onEditToy} />
                     {/* <button className="buy" onClick={() => addToCart(car)}>Add to Cart</button> */}
-                </li>
+                </article>
             )}
-        </ul>
+        </section>
     )
 }

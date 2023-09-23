@@ -1,0 +1,15 @@
+.about-page {
+    padding: 2em;
+    max-width: 600px;
+    text-align: center;
+}
+
+.about-page h1,
+.about-page h3,
+.about-page p {
+    margin-bottom: 1em;
+}
+
+.about-page h2 {
+    margin-bottom: 0.5em;
+}

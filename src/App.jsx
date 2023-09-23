@@ -19,7 +19,7 @@ export function App() {
     return (
         <Provider store={store}>
             <Router>
-                <section className="app">
+                <section className="flex flex-column align-center">
                     <AppHeader />
                     <main>
                         <Routes>

@@ -1,19 +1,12 @@
 aside {
     width: 240px;
     margin: 25px 0;
-    padding: 0 10px;
 }
 
 .add-toy {
-    background-color: var(--clr1);
     margin: 0 0 25px;
     width: 100%;
     font-size: 1rem;
-    font-weight: 800;
-    padding: 10px 0;
-    border-radius: 10px;
-    border: none;
-    color: var(--clr3);
 }
 
 .toy-filter {
@@ -24,11 +17,7 @@ aside {
 
 .filter-container {
     padding: 20px 0;
-    border-bottom: 0.8px solid rgb(194, 194, 194)
-}
-
-.filter-container:last-child {
-    border: none;
+    border-top: 0.8px solid rgb(194, 194, 194)
 }
 
 .filter-container>* {

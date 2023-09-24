@@ -7,6 +7,7 @@ import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField';
 import { InputAdornment } from '@mui/material'
 
+
 import { useEffect, useRef, useState } from "react"
 import { toyService } from "../services/toy.service.js"
 import { utilService } from "../services/util.service.js"
@@ -44,7 +45,7 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
                     variant="outlined"
                     value={filterByToEdit.title}
                     onChange={handleChange}
-                    helperText="Enter your desired toy"
+                    helperText="What are you looking for?"
                 />
             </div>
 
@@ -61,7 +62,7 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
 
             <div className="filter-container flex flex-column">
                 <FormControl>
-                    <InputLabel id="inStock">In Stock</InputLabel>
+                    <InputLabel >In Stock</InputLabel>
                     <Select
                         labelId="inStock"
                         name="inStock"

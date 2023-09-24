@@ -22,6 +22,9 @@ export function ToyPreview({ toy, onRemoveToy, onEditToy }) {
                     <Typography gutterBottom variant="h5" component="div">
                         {toy.name}
                     </Typography>
+                    <Typography gutterBottom variant="h6" component="div">
+                        {`$${toy.price.toLocaleString()}`}
+                    </Typography>
                     <Typography variant="body2" color="text.secondary">
                         {toy.labels.map((label, idx) => (
                             <span className='label-span' key={idx}>{label}</span>
@@ -34,7 +37,7 @@ export function ToyPreview({ toy, onRemoveToy, onEditToy }) {
             </CardActionArea>
             <CardActions className='flex justify-between'>
                 <button onClick={() => onEditToy(toy)}>Edit</button>
-                <span className='icon' onClick={() => onRemoveToy(toy._id)}><AiOutlineDelete size="2rem" /></span>
+                <span className='icon' onClick={() => onRemoveToy(toy._id)}><AiOutlineDelete size="1.5rem" /></span>
             </CardActions>
         </Card>
     )

@@ -15,7 +15,7 @@ export function ToyPreview({ toy, onRemoveToy, onEditToy }) {
     }
 
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card >
             <CardActionArea onClick={onNavToDetails}>
                 <img src={utilService.getAssetSrc('logo.png')} />
                 <CardContent>

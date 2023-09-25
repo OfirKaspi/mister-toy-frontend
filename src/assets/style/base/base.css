@@ -2,11 +2,14 @@
     box-sizing: border-box;
 }
 
-main {
+#root {
     min-height: 100vh;
+    position: relative;
 }
 
-html {}
+main {
+    padding-bottom: 5rem;
+}
 
 h1 {
     font-size: 2rem;

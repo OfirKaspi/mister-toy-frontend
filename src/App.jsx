@@ -20,19 +20,17 @@ export function App() {
     return (
         <Provider store={store}>
             <Router>
-                <section className="flex flex-column align-center">
-                    <AppHeader />
-                    <main>
-                        <Routes>
-                            <Route element={<HomePage />} path="/" />
-                            <Route element={<AboutPage />} path="/about" />
-                            <Route element={<ToyIndex />} path="/toy" />
-                            <Route element={<ToyDetails />} path="/toy/:toyId" />
-                            <Route element={<ToyEdit />} path="/toy/edit" />
-                        </Routes>
-                    </main>
-                    <AppFooter />
-                </section>
+                <AppHeader />
+                <main>
+                    <Routes>
+                        <Route element={<HomePage />} path="/" />
+                        <Route element={<AboutPage />} path="/about" />
+                        <Route element={<ToyIndex />} path="/toy" />
+                        <Route element={<ToyDetails />} path="/toy/:toyId" />
+                        <Route element={<ToyEdit />} path="/toy/edit" />
+                    </Routes>
+                </main>
+                <AppFooter />
             </Router>
         </Provider>
     )

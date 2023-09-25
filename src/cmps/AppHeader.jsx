@@ -8,12 +8,12 @@ export function AppHeader() {
             <div className="secondary-header-container flex justify-between">
                 <span>Welcome to Mister Toy Store!</span>
                 <div className="flex">
-                    <div className="phone-container flex">
-                        <span className="flex align-center"><AiOutlinePhone /></span>
+                    <div className="phone-container flex align-center">
+                        <span><AiOutlinePhone /></span>
                         <span>052-6855999</span>
                     </div>
-                    <div className="login-container flex">
-                        <span className="flex align-center"><BsPerson /></span>
+                    <div className="login-container flex align-center">
+                        <span><BsPerson /></span>
                         <span>Sign in or Register</span>
                     </div>
                 </div>

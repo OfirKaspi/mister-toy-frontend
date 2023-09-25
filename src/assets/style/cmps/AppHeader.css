@@ -9,7 +9,7 @@ header {
 }
 
 .secondary-header-container>span {
-  padding-inline-start: 10px;
+  padding: 0 10px;
 }
 
 .login-container {

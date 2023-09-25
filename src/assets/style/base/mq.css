@@ -1,0 +1,32 @@
+@media (max-width: 540px) {
+    .main-header-container {
+        flex-direction: column;
+        gap: 10px !important;
+    }
+
+    .phone-container {
+        border-inline-start: 1px solid white;
+    }
+
+    .header-nav {
+        justify-content: center;
+    }
+
+    .header-nav>a {
+        padding-bottom: 5px;
+    }
+
+    .index-page {
+        flex-direction: column;
+    }
+
+    aside {
+        margin: 0 0 25px 0 !important;
+    }
+
+    footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+}

@@ -12,7 +12,7 @@ export function ToyList({ toys, onRemoveToy, onEditToy, sortBy }) {
             case "createdAt":
                 return a.createdAt - b.createdAt;
             default:
-                return 0; // No sorting (default order)
+                return 0;
         }
     }
 

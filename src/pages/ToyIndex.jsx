@@ -7,7 +7,6 @@ import { loadToys, removeToy, saveToy } from '../store/actions/toy.actions.js'
 import { SET_FILTER_BY, SET_SORT_BY } from '../store/reducers/toy.reducer.js'
 import { useEffect, } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { ToyEdit } from './ToyEdit.jsx'
 
 export function ToyIndex() {
     const navigate = useNavigate()
@@ -29,7 +28,6 @@ export function ToyIndex() {
 
 
     function onRemoveToy(toyId) {
-        // removeToyOptimistic(toyId)
         removeToy(toyId)
             .then(() => {
                 showSuccessMsg('Toy removed')
@@ -52,12 +50,6 @@ export function ToyIndex() {
                 showErrorMsg('Cannot update toy')
             })
     }
-
-    // function addToCart(toy) {
-    //     console.log(`Adding ${toy.vendor} to Cart`)
-    //     dispatch({ type: ADD_CAR_TO_CART, toy })
-    //     showSuccessMsg('Added to Cart')
-    // }
 
     function onSetFilter(filterBy) {
         dispatch({ type: SET_FILTER_BY, filterBy })
@@ -83,12 +75,10 @@ export function ToyIndex() {
                     onRemoveToy={onRemoveToy}
                     onEditToy={onEditToy}
                     sortBy={sortBy}
-                // addToCart={addToCart}
                 />
                 }
 
                 {isLoading && <div>Loading...</div>}
-                {/* <pre>{JSON.stringify(cart, null, 2)}</pre> */}
             </main>
         </div>
     )

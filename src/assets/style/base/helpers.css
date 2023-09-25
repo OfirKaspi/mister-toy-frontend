@@ -20,20 +20,6 @@
     align-items: center;
 }
 
-/* text helpers */
-
-.colored-text {
-    color: var(--clr1);
-}
-
-/* list helpers */
-
-.clean-list {
-    padding: 0;
-    margin: 0;
-    list-style-type: none;
-}
-
 .green {
     color: green;
 }

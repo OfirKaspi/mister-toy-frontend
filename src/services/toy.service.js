@@ -1,9 +1,7 @@
-import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
 import { httpService } from './http.service.js'
 
 const BASE_URL = 'toy/'
-const STORAGE_KEY = 'toyDB'
 
 // _createToys()
 
@@ -12,9 +10,10 @@ export const toyService = {
     getById,
     save,
     remove,
-    getEmptyToy,
+    getDefaultToy,
     getDefaultFilter,
-    getLabels
+    getLabels,
+    getEmptyToy
 }
 
 function query(filterBy = {}) {
@@ -37,7 +36,7 @@ function save(toy) {
     }
 }
 
-function getEmptyToy() {
+function getDefaultToy() {
     return {
         // need to add a promt or modal to add name
         name: 'Talking Doll-' + (Date.now() % 1000),
@@ -46,6 +45,18 @@ function getEmptyToy() {
         labels: ['Doll', 'Battery Powered', 'Baby'],
         createdAt: Date.now(),
         inStock: true,
+    }
+}
+
+function getEmptyToy() {
+    return {
+        // need to add a promt or modal to add name
+        name: '',
+        price: '',
+        // labels: [],
+        createdAt: Date.now(),
+        inStock: true,
+        description: ''
     }
 }
 

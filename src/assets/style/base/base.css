@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+main {
+    min-height: 100vh;
+}
+
 html {}
 
 h1 {
@@ -12,16 +16,6 @@ body {
     margin: 0;
     color: var(--gray3);
     background-color: #ebebeb;
-}
-
-button {
-    background-color: var(--clr1);
-    font-weight: 800;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-    color: var(--clr3);
-    cursor: pointer;
 }
 
 p,
@@ -79,4 +73,35 @@ a.active {
 
 .popup-menu h1 {
     font-size: 1.5em;
+}
+
+.icon {
+    cursor: pointer;
+}
+
+.btn {
+    background-color: var(--clr1);
+    font-weight: 800;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+    color: var(--clr3);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+/* HOVER */
+
+.btn:hover {
+    background-color: var(--clr1-light);
+}
+
+.icon:hover {
+    box-shadow: 0 2px 0 gray;
+}
+
+.full-btn {
+    margin: 0 0 25px;
+    width: 100%;
+    font-size: 1rem;
 }

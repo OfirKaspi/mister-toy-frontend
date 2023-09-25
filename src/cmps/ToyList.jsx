@@ -23,7 +23,6 @@ export function ToyList({ toys, onRemoveToy, onEditToy, sortBy }) {
             {sortedToys.map(toy =>
                 <article className="toy-preview" key={toy._id}>
                     <ToyPreview toy={toy} onRemoveToy={onRemoveToy} onEditToy={onEditToy} />
-                    {/* <button className="buy" onClick={() => addToCart(car)}>Add to Cart</button> */}
                 </article>
             )}
         </section>

@@ -15,7 +15,7 @@ export function ToyPreview({ toy, onRemoveToy, onEditToy }) {
     }
 
     return (
-        <Card sx={{ maxWidth: 345, margin: 2 }}>
+        <Card sx={{ maxWidth: 345 }}>
             <CardActionArea onClick={onNavToDetails}>
                 <img src={utilService.getAssetSrc('logo.png')} />
                 <CardContent>
@@ -25,18 +25,20 @@ export function ToyPreview({ toy, onRemoveToy, onEditToy }) {
                     <Typography gutterBottom variant="h6" component="div">
                         {`$${toy.price.toLocaleString()}`}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        {toy.labels.map((label, idx) => (
-                            <span className='label-span' key={idx}>{label}</span>
-                        ))}
-                    </Typography>
+                    {
+                        toy.labels && <Typography variant="body2" color="text.secondary">
+                            {toy.labels.map((label, idx) => (
+                                <span className='label-span' key={idx}>{label}</span>
+                            ))}
+                        </Typography>
+                    }
                     <Typography variant="body2" color="text.secondary">
                         {toy.inStock ? <span className="green">Available in store</span> : <span className="red">Out of stock</span>}
                     </Typography>
                 </CardContent>
             </CardActionArea>
             <CardActions className='flex justify-between'>
-                <button onClick={() => onEditToy(toy)}>Edit</button>
+                <button className='btn' onClick={() => onEditToy(toy)}>Edit</button>
                 <span className='icon' onClick={() => onRemoveToy(toy._id)}><AiOutlineDelete size="1.5rem" /></span>
             </CardActions>
         </Card>

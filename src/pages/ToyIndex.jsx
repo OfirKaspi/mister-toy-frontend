@@ -2,19 +2,22 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { ToyFilter } from '../cmps/ToyFilter.jsx'
 import { ToyList } from '../cmps/ToyList.jsx'
-import { toyService } from '../services/toy.service.js'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { loadToys, removeToy, saveToy } from '../store/actions/toy.actions.js'
 import { SET_FILTER_BY, SET_SORT_BY } from '../store/reducers/toy.reducer.js'
-import { useEffect } from 'react'
+import { useEffect, } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ToyEdit } from './ToyEdit.jsx'
 
 export function ToyIndex() {
-
+    const navigate = useNavigate()
     const dispatch = useDispatch()
     const toys = useSelector(storeState => storeState.toyModule.toys)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const sortBy = useSelector(storeState => storeState.toyModule.sortBy)
+
+    // the use effect causing many re rendering
 
     useEffect(() => {
         loadToys()
@@ -34,19 +37,6 @@ export function ToyIndex() {
             .catch(err => {
                 console.log('Cannot remove toy', err)
                 showErrorMsg('Cannot remove toy')
-            })
-    }
-
-    function onAddToy() {
-        const toyToSave = toyService.getEmptyToy()
-        console.log(toyToSave);
-        saveToy(toyToSave)
-            .then(savedToy => {
-                showSuccessMsg(`Toy added (id: ${savedToy._id})`)
-            })
-            .catch(err => {
-                console.log('Cannot add toy', err)
-                showErrorMsg('Cannot add toy')
             })
     }
 
@@ -77,10 +67,14 @@ export function ToyIndex() {
         dispatch({ type: SET_SORT_BY, sortBy })
     }
 
+    function onNavToEdit() {
+        navigate('/toy/edit')
+    }
+
     return (
-        <div className='flex'>
+        <div className='index-page flex'>
             <aside>
-                <button className='add-toy' onClick={onAddToy}>Add Toy</button>
+                <button className='btn full-btn' onClick={onNavToEdit}>Add Toy</button>
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} onSetSort={onSetSort} />
             </aside>
             <main>

@@ -1,18 +1,16 @@
 aside {
     width: 240px;
-    margin: 25px 0;
-}
-
-.add-toy {
-    margin: 0 0 25px;
-    width: 100%;
-    font-size: 1rem;
+    margin-inline-end: 25px;
 }
 
 .toy-filter {
     background-color: white;
-    border-radius: 10px;
+    border-radius: 4px;
     padding: 1px 15px;
+}
+
+.toy-filter>h2 {
+    padding: 15px 0;
 }
 
 .filter-container {

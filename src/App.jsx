@@ -13,6 +13,7 @@ import { AboutPage } from './pages/AboutPage'
 import { ToyIndex } from './pages/ToyIndex'
 import { ToyDetails } from './pages/ToyDetails'
 import { AppFooter } from './cmps/AppFooter'
+import { ToyEdit } from './pages/ToyEdit'
 
 export function App() {
 
@@ -27,6 +28,7 @@ export function App() {
                             <Route element={<AboutPage />} path="/about" />
                             <Route element={<ToyIndex />} path="/toy" />
                             <Route element={<ToyDetails />} path="/toy/:toyId" />
+                            <Route element={<ToyEdit />} path="/toy/edit" />
                         </Routes>
                     </main>
                     <AppFooter />

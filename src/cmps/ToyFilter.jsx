@@ -1,7 +1,6 @@
 // TODO : add a dropdown multiselection
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
-import FormHelperText from '@mui/material/FormHelperText'
 import FormControl from '@mui/material/FormControl'
 import Select from '@mui/material/Select'
 import TextField from '@mui/material/TextField';
@@ -9,8 +8,8 @@ import { InputAdornment } from '@mui/material'
 
 
 import { useEffect, useRef, useState } from "react"
-import { toyService } from "../services/toy.service.js"
 import { utilService } from "../services/util.service.js"
+import { MultiSelectLabels } from './MultiSelectLabels.jsx'
 
 export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
 
@@ -99,6 +98,12 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
                     </Select>
                 </FormControl>
             </div>
+
+            {/* cause many rerendering */}
+
+            {/* <div className="filter-container flex flex-column">
+                <MultiSelectLabels />
+            </div> */}
         </section>
     )
 }

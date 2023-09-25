@@ -1,0 +1,15 @@
+.toy-details {
+    padding: 2em;
+    max-width: 600px;
+    text-align: center;
+}
+
+.toy-details h1,
+.toy-details h3,
+.toy-details p {
+    margin-bottom: 1em;
+}
+
+.toy-details button {
+    margin-top: 1em;
+}

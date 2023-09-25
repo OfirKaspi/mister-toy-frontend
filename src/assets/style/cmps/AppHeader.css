@@ -1,8 +1,32 @@
-.app-header {
+header {
+  width: 100%;
+  color: white;
+}
+
+.secondary-header-container {
+  background-color: var(--clr1bg-dark);
+  padding: 0.5em;
+}
+
+.secondary-header-container>span {
+  padding-inline-start: 10px;
+}
+
+.login-container {
+  border-inline-start: 1px solid white;
+}
+
+.phone-container,
+.login-container {
+  padding: 0 10px;
+  gap: 10px;
+}
+
+.main-header-container {
   background-color: var(--clr1bg);
   padding: 1em;
   width: 100%;
-  gap: 4em;
+  gap: 2em;
 }
 
 .app-name {
@@ -11,6 +35,8 @@
 }
 
 .header-nav>a {
+  margin: 0 5px;
+  font-size: 1.25rem;
   width: 54px;
   height: 100%;
   display: flex;

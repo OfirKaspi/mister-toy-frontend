@@ -1,3 +1,5 @@
+import { HoverRating } from "../cmps/Rating.jsx"
+
 export function AboutPage() {
     return (
         <section className="about-page flex flex-column">
@@ -36,6 +38,16 @@ export function AboutPage() {
                 Thank you for choosing Mister Toy,
                 where joy and sustainability go hand in hand.
             </p>
+
+            <h2>
+                Thank you for visiting our site
+            </h2>
+            <p>
+                We're dedicated to improving our services and would greatly appreciate your feedback. Please consider leaving a review to help us serve you better. Thank you for choosing us!
+            </p>
+            <div className="flex justify-center">
+                <HoverRating />
+            </div>
         </section>
     )
 }

@@ -21,7 +21,7 @@ export function App() {
         <Provider store={store}>
             <Router>
                 <AppHeader />
-                <main>
+                <main className='flex algn-center justify-center'>
                     <Routes>
                         <Route element={<HomePage />} path="/" />
                         <Route element={<AboutPage />} path="/about" />

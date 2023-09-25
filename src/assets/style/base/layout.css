@@ -1,7 +1,12 @@
 .index-page {
     margin: 25px;
+    max-width: 1200px;
 }
 
 .home-page {
     margin: 50px 25px 25px;
+}
+
+.lottie-container {
+    max-width: 500px;
 }

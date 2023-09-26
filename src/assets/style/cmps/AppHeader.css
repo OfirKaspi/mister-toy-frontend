@@ -18,6 +18,7 @@ header {
 
 .phone-container,
 .login-container {
+  color: white;
   padding: 0 10px;
   gap: 10px;
 }

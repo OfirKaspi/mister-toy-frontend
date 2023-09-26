@@ -14,6 +14,8 @@ import { ToyIndex } from './pages/ToyIndex'
 import { ToyDetails } from './pages/ToyDetails'
 import { AppFooter } from './cmps/AppFooter'
 import { ToyEdit } from './pages/ToyEdit'
+import { Login } from './pages/Login'
+import { Signup } from './pages/Signup'
 
 export function App() {
 
@@ -24,6 +26,8 @@ export function App() {
                 <main className='flex algn-center justify-center'>
                     <Routes>
                         <Route element={<HomePage />} path="/" />
+                        <Route element={<Login />} path="/login" />
+                        <Route element={<Signup />} path="/signup" />
                         <Route element={<AboutPage />} path="/about" />
                         <Route element={<ToyIndex />} path="/toy" />
                         <Route element={<ToyDetails />} path="/toy/:toyId" />

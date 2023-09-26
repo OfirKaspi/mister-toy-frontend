@@ -61,7 +61,7 @@ function getEmptyToy() {
 }
 
 function getDefaultFilter() {
-    return { name: '', maxPrice: '', inStock: '', lables: [] }
+    return { name: '', maxPrice: '', inStock: '', labels: [] }
 }
 
 function getLabels() {

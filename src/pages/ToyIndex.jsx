@@ -16,9 +16,11 @@ export function ToyIndex() {
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const sortBy = useSelector(storeState => storeState.toyModule.sortBy)
 
-    // the use effect causing many re rendering
+    // something causing many re-rendering 
+    console.log('from the use effect');
 
     useEffect(() => {
+        console.log('from the use effect');
         loadToys()
             .catch(err => {
                 console.log('err:', err)

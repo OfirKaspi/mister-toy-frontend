@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import OutlinedInput from '@mui/material/OutlinedInput';
@@ -31,20 +31,18 @@ function getStyles(name, personName, theme) {
     };
 }
 
-export function MultiSelectLabels() {
+export function MultiSelectLabels({ setLabels }) {
     const theme = useTheme();
-    const [personName, setPersonName] = useState([]);
-    console.log(personName);
+    const [labelsNames, setPersonName] = useState([]);
+
+    useEffect(() => {
+        setLabels(labelsNames)
+    }, [labelsNames])
 
     const handleChange = (event) => {
-        const {
-            target: { value },
-        } = event;
-        setPersonName(
-            // On autofill we get a stringified value.
-            typeof value === 'string' ? value.split(',') : value,
-        );
-    };
+        const { target: { value } } = event
+        setPersonName(typeof value === 'string' ? value.split(',') : value)
+    }
 
     return (
         <>
@@ -53,7 +51,7 @@ export function MultiSelectLabels() {
                 <Select
                     labelId="demo-multiple-chip-label"
                     multiple
-                    value={personName}
+                    value={labelsNames}
                     onChange={handleChange}
                     input={<OutlinedInput id="select-multiple-chip" label="Labels" />}
                     renderValue={(selected) => (
@@ -69,7 +67,7 @@ export function MultiSelectLabels() {
                         <MenuItem
                             key={name}
                             value={name}
-                            style={getStyles(name, personName, theme)}
+                            style={getStyles(name, labelsNames, theme)}
                         >
                             {name}
                         </MenuItem>

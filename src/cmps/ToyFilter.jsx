@@ -20,12 +20,17 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
 
     useEffect(() => {
         onSetFilter.current(filterByToEdit)
+        console.log(filterByToEdit);
     }, [filterByToEdit])
 
     function handleChange({ target }) {
         let { value, name: field, type } = target
         value = (type === 'number') ? (+value || '') : value
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
+    }
+
+    function setLabels(currLabels) {
+        setFilterByToEdit((prevFilter) => ({ ...prevFilter, labels: currLabels }))
     }
 
     function handleSortChange(event) {
@@ -101,9 +106,9 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
 
             {/* cause many rerendering */}
 
-            {/* <div className="filter-container flex flex-column">
-                <MultiSelectLabels />
-            </div> */}
+            <div className="filter-container flex flex-column">
+                <MultiSelectLabels setLabels={setLabels} />
+            </div>
         </section>
     )
 }

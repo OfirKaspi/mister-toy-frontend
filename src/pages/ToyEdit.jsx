@@ -12,7 +12,7 @@ import { utilService } from '../services/util.service.js';
 export function ToyEdit() {
     const navigate = useNavigate()
 
-    const paperStyle = { padding: 20, height: 'fit-content', width: 300, margin: '25px 0' }
+    const paperStyle = { padding: 20, height: 'fit-content', width: 350, margin: '25px 0' }
 
     const [toyToAdd, setToyToAdd] = useState(toyService.getEmptyToy())
     console.log(toyToAdd);
@@ -23,36 +23,34 @@ export function ToyEdit() {
         setToyToAdd((prevToy) => ({ ...prevToy, [field]: value }))
     }
 
-    function onAddRandomToy() {
+    async function onAddRandomToy() {
         const toyToSave = toyService.getDefaultToy()
         console.log(toyToSave);
-        saveToy(toyToSave)
-            .then(savedToy => {
-                showSuccessMsg(`Toy added (id: ${savedToy._id})`)
-            })
-            .catch(err => {
-                console.log('Cannot add toy', err)
-                showErrorMsg('Cannot add toy')
-            })
-            .finally(() => {
-                navigate('/toy')
-            })
+
+        try {
+            const savedToy = saveToy(toyToSave)
+            showSuccessMsg(`Toy added (id: ${savedToy._id})`)
+        } catch (err) {
+            console.log('Cannot add toy', err)
+            showErrorMsg('Cannot add toy')
+        } finally {
+            navigate('/toy')
+        }
     }
 
-    function onAddNewToy(ev) {
+    async function onAddNewToy(ev) {
         ev.preventDefault()
 
-        saveToy(toyToAdd)
-            .then(addedToy => {
-                showSuccessMsg(`Toy added (id: ${addedToy._id})`)
-            })
-            .catch(err => {
-                console.log('Cannot add toy', err)
-                showErrorMsg('Cannot add toy')
-            })
-            .finally(() => {
-                navigate('/toy')
-            })
+        try {
+            const addedToy = saveToy(toyToAdd)
+            showSuccessMsg(`Toy added (id: ${addedToy._id})`)
+
+        } catch (err) {
+            console.log('Cannot add toy', err)
+            showErrorMsg('Cannot add toy')
+        } finally {
+            navigate('/toy')
+        }
     }
 
     return (

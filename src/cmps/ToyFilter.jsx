@@ -106,9 +106,9 @@ export function ToyFilter({ filterBy, onSetFilter, onSetSort }) {
 
             {/* cause many rerendering */}
 
-            <div className="filter-container flex flex-column">
+            {/* <div className="filter-container flex flex-column">
                 <MultiSelectLabels setLabels={setLabels} />
-            </div>
+            </div> */}
         </section>
     )
 }

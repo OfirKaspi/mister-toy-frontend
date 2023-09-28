@@ -17,7 +17,7 @@ export function ToyIndex() {
     const sortBy = useSelector(storeState => storeState.toyModule.sortBy)
 
     // something causing many re-rendering 
-    console.log('from the use effect');
+    console.log('Outside');
 
     useEffect(() => {
         console.log('from the use effect');
@@ -29,28 +29,27 @@ export function ToyIndex() {
     }, [filterBy, sortBy])
 
 
-    function onRemoveToy(toyId) {
-        removeToy(toyId)
-            .then(() => {
-                showSuccessMsg('Toy removed')
-            })
-            .catch(err => {
-                console.log('Cannot remove toy', err)
-                showErrorMsg('Cannot remove toy')
-            })
+    async function onRemoveToy(toyId) {
+        try {
+            await removeToy(toyId)
+            showSuccessMsg('Toy removed')
+        } catch (err) {
+            console.log('Cannot remove toy', err)
+            showErrorMsg('Cannot remove toy')
+        }
     }
 
-    function onEditToy(toy) {
+    async function onEditToy(toy) {
         const price = +prompt('New price?', toy.price)
         const toyToSave = { ...toy, price }
-        saveToy(toyToSave)
-            .then(savedToy => {
-                showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
-            })
-            .catch(err => {
-                console.log('Cannot update toy', err)
-                showErrorMsg('Cannot update toy')
-            })
+
+        try {
+            const savedToy = saveToy(toyToSave)
+            showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
+        } catch (err) {
+            console.log('Cannot update toy', err)
+            showErrorMsg('Cannot update toy')
+        }
     }
 
     function onSetFilter(filterBy) {

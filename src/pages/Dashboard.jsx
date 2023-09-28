@@ -17,30 +17,30 @@ export function Dashboard() {
             .catch(error => console.error(error));
     }, []);
 
-    function stockCounter() {
-        return toyService.query()
-            .then(toys => {
-                const countObj = toys.reduce((countObj, toy) => {
-                    if (toy.inStock === true) {
-                        countObj.inStockCount += 1;
-                    } else if (toy.inStock === false) {
-                        countObj.outOfStockCount += 1;
-                    }
-                    return countObj;
-                }, { inStockCount: 0, outOfStockCount: 0 });
+    async function stockCounter() {
+        try {
+            const toys = await toyService.query()
+            const countObj = toys.reduce((countObj, toy) => {
+                if (toy.inStock === true) {
+                    countObj.inStockCount += 1;
+                } else if (toy.inStock === false) {
+                    countObj.outOfStockCount += 1;
+                }
+                return countObj;
+            }, { inStockCount: 0, outOfStockCount: 0 });
 
-                const inStockCount = countObj.inStockCount;
-                const outOfStockCount = countObj.outOfStockCount;
+            const inStockCount = countObj.inStockCount;
+            const outOfStockCount = countObj.outOfStockCount;
 
-                console.log('In Stock Count:', inStockCount);
-                console.log('Out of Stock Count:', outOfStockCount);
+            console.log('In Stock Count:', inStockCount);
+            console.log('Out of Stock Count:', outOfStockCount);
 
-                return { inStockCount, outOfStockCount }; // Return counts as an object
-            })
-            .catch(err => {
-                console.log('toy action -> Cannot load toys', err);
-                throw err;
-            });
+            return { inStockCount, outOfStockCount };
+
+        } catch (err) {
+            console.log('toy action -> Cannot load toys', err);
+            throw err;
+        }
     }
 
     const { inStockCount, outOfStockCount } = stockCounts;

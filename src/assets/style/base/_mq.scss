@@ -1,5 +1,5 @@
 @media (max-width: 740px) {
-    .index-page {
+    .index-container {
         flex-direction: column;
     }
 
@@ -37,5 +37,6 @@
     footer {
         flex-direction: column;
         gap: 10px;
+        bottom: -6rem !important;
     }
 }

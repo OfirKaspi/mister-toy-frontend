@@ -16,9 +16,7 @@ export function ToyIndex() {
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const sortBy = useSelector(storeState => storeState.toyModule.sortBy)
-    const currPage = useSelector(storeState => storeState.toyModule.currPage)
 
-    console.log(currPage);
 
     // something causing many re-rendering 
     console.log('Outside');
@@ -66,7 +64,7 @@ export function ToyIndex() {
 
     function handlePageChange(diff) {
         if (filterBy.pageIdx === 0 && diff === -1) return
-        if (toys.length < PAGE_SIZE === 0 && diff === -1) return
+        if (toys.length < PAGE_SIZE && diff === 1) return
         onSetFilter({ ...filterBy, pageIdx: filterBy.pageIdx + diff })
     }
 
@@ -75,28 +73,31 @@ export function ToyIndex() {
     }
 
     return (
-        <div className='index-page flex'>
-            <aside>
-                <button className='btn full-btn' onClick={onNavToEdit}>Add Toy</button>
-                <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} onSetSort={onSetSort} />
-            </aside>
-            <main>
-                {!isLoading && <>
-                    <ToyList
-                        toys={toys}
-                        onRemoveToy={onRemoveToy}
-                        onEditToy={onEditToy}
-                        sortBy={sortBy}
-                    />
-                    <span className='btn' onClick={() => handlePageChange(-1)}>-</span>
-                    <span>{currPage}</span>
-                    <span className='btn' onClick={() => handlePageChange(1)}>+</span>
-                </>
-                }
+        <div className='index-page flex flex-column'>
+            <div className='index-container flex'>
+                <aside>
+                    <button className='btn full-btn' onClick={onNavToEdit}>Add Toy</button>
+                    <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} onSetSort={onSetSort} />
+                </aside>
+                <main>
+                    {!isLoading &&
+                        <ToyList
+                            toys={toys}
+                            onRemoveToy={onRemoveToy}
+                            onEditToy={onEditToy}
+                            sortBy={sortBy}
+                        />
+                    }
 
-                {isLoading && <div>Loading...</div>}
+                    {isLoading && <div>Loading...</div>}
 
-            </main>
+                </main>
+            </div>
+            {!isLoading && <div className='pagination-container flex align-center justify-center'>
+                <span className='btn' onClick={() => handlePageChange(-1)}>-</span>
+                <span className='pages'>{filterBy.pageIdx + 1}</span>
+                <span className='btn' onClick={() => handlePageChange(1)}>+</span>
+            </div>}
         </div>
     )
 

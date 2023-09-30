@@ -9,7 +9,7 @@ export function AppFooter() {
         <>
             <footer className='flex justify-between align-center'>
                 <p>
-                    Currently <span className='toys-count'>{toysCount}</span> toys in the shop
+                    Currently <span className='toys-count'>{toysCount}</span> toys to show
                 </p>
                 <p>
                     Coffeerights to Buzz Lightyear

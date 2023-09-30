@@ -1,9 +1,10 @@
 footer {
+    margin-top: 25px;
     background-color: $bgcPrimary1;
     padding: 1em;
     width: 100%;
     position: absolute;
-    bottom: 0;
+    bottom: -4rem;
 
     &>* {
         color: $white

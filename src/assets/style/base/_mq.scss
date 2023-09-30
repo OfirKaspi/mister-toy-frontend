@@ -13,10 +13,10 @@
         flex-direction: column;
         gap: 10px !important;
 
-        & > header-nav{
+        &>.header-nav {
             justify-content: center;
 
-            & > a {
+            &>a {
                 padding-bottom: 5px;
             }
         }

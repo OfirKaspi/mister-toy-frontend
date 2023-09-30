@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 
 export function AppHeader() {
     return (
-        <header>
+        <>
             <div className="secondary-header-container flex align-center justify-between">
                 <span>Welcome to Mister Toy Store!</span>
                 <div className="flex">
@@ -28,7 +28,7 @@ export function AppHeader() {
                     <NavLink to="/about">About</NavLink>
                 </nav>
             </div>
-        </header>
+        </>
     )
 }
 

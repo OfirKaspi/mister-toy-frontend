@@ -23,7 +23,9 @@ export function App() {
     return (
         <Provider store={store}>
             <Router>
-                <AppHeader />
+                <header>
+                    <AppHeader />
+                </header>
                 <main className='flex algn-center justify-center'>
                     <Routes>
                         <Route element={<HomePage />} path="/" />
@@ -36,7 +38,9 @@ export function App() {
                         <Route element={<ToyEdit />} path="/toy/edit" />
                     </Routes>
                 </main>
-                <AppFooter />
+                <footer>
+                    <AppFooter />
+                </footer>
             </Router>
         </Provider>
     )

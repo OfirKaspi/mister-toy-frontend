@@ -12,21 +12,27 @@
     .main-header-container {
         flex-direction: column;
         gap: 10px !important;
+
+        & > header-nav{
+            justify-content: center;
+
+            & > a {
+                padding-bottom: 5px;
+            }
+        }
     }
 
     .phone-container {
         border-inline-start: 1px solid white;
     }
 
-    .header-nav {
-        justify-content: center;
-    }
+    // .header-nav {
+    //     justify-content: center;
+    // }
 
-    .header-nav>a {
-        padding-bottom: 5px;
-    }
-
-
+    // .header-nav>a {
+    //     padding-bottom: 5px;
+    // }
 
     footer {
         flex-direction: column;

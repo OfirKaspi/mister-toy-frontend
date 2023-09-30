@@ -11,10 +11,9 @@ export function Dashboard() {
     const [stockCounts, setStockCounts] = useState({ inStockCount: 0, outOfStockCount: 0 });
 
     useEffect(() => {
-        // Call stockCounter function to fetch counts and update the state
         stockCounter()
             .then(counts => setStockCounts(counts))
-            .catch(error => console.error(error));
+            .catch(err => console.error(err));
     }, []);
 
     async function stockCounter() {

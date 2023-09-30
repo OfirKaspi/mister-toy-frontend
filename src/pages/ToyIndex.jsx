@@ -4,11 +4,12 @@ import { ToyFilter } from '../cmps/ToyFilter.jsx'
 import { ToyList } from '../cmps/ToyList.jsx'
 import { showSuccessMsg, showErrorMsg } from '../services/event-bus.service.js'
 import { loadToys, removeToy, saveToy } from '../store/actions/toy.actions.js'
-import { SET_FILTER_BY, SET_SORT_BY } from '../store/reducers/toy.reducer.js'
+import { CHANGE_PAGE, SET_FILTER_BY, SET_SORT_BY } from '../store/reducers/toy.reducer.js'
 import { useEffect, } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export function ToyIndex() {
+    const PAGE_SIZE = 12
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const toys = useSelector(storeState => storeState.toyModule.toys)
@@ -63,6 +64,12 @@ export function ToyIndex() {
         dispatch({ type: SET_SORT_BY, sortBy })
     }
 
+    function handlePageChange(diff) {
+        if (filterBy.pageIdx === 0 && diff === -1) return
+        if (toys.length < PAGE_SIZE === 0 && diff === -1) return
+        onSetFilter({ ...filterBy, pageIdx: filterBy.pageIdx + diff })
+    }
+
     function onNavToEdit() {
         navigate('/toy/edit')
     }
@@ -74,15 +81,21 @@ export function ToyIndex() {
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} onSetSort={onSetSort} />
             </aside>
             <main>
-                {!isLoading && <ToyList
-                    toys={toys}
-                    onRemoveToy={onRemoveToy}
-                    onEditToy={onEditToy}
-                    sortBy={sortBy}
-                />
+                {!isLoading && <>
+                    <ToyList
+                        toys={toys}
+                        onRemoveToy={onRemoveToy}
+                        onEditToy={onEditToy}
+                        sortBy={sortBy}
+                    />
+                    <span className='btn' onClick={() => handlePageChange(-1)}>-</span>
+                    <span>{currPage}</span>
+                    <span className='btn' onClick={() => handlePageChange(1)}>+</span>
+                </>
                 }
 
                 {isLoading && <div>Loading...</div>}
+
             </main>
         </div>
     )

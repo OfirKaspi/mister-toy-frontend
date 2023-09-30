@@ -17,7 +17,7 @@ const initialState = {
     filterBy: toyService.getDefaultFilter(),
     isLoading: false,
     sortBy: '',
-    currPage: 1
+    // pageIdx: 0
 }
 
 export function toyReducer(state = initialState, action = {}) {
@@ -40,8 +40,8 @@ export function toyReducer(state = initialState, action = {}) {
             toys = state.toys.map(toy => toy._id === action.toy._id ? action.toy : toy)
             return { ...state, toys }
 
-        case CHANGE_PAGE:
-            return { ...state, currPage: action.currPage }
+        // case CHANGE_PAGE:
+        //     return { ...state, currPage: action.currPage }
 
         case SET_FILTER_BY:
             return { ...state, filterBy: { ...action.filterBy } }

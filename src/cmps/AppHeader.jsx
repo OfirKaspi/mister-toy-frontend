@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 
 export function AppHeader() {
     return (
-        <header className="app-header">
+        <header>
             <div className="secondary-header-container flex align-center justify-between">
                 <span>Welcome to Mister Toy Store!</span>
                 <div className="flex">

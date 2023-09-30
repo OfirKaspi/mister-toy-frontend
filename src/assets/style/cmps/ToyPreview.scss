@@ -1,0 +1,14 @@
+.label-span {
+    border-left: 1px solid gray;
+    padding: 0 5px;
+
+    &:first-of-type {
+        border: none;
+        padding-inline-start: 0;
+    }
+}
+
+// .label-span:first-of-type {
+//     border: none;
+//     padding-inline-start: 0;
+// }

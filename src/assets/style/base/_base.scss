@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+
+#root {
+    min-height: 100vh;
+    position: relative;
+}
+
+main {
+    padding-bottom: 5rem;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+body {
+    margin: 0;
+    background-color: #ebebeb;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: $clrPrimary3;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+    color: $clrPrimary3;
+
+    &.active {
+        box-shadow: 0px 5px 0px $clrPrimary1;
+    }
+}
+
+// a.active {
+//     box-shadow: 0px 5px 0px $clrPrimary1;
+// }
+
+
+/* Dont stretch my Media */
+img,
+embed,
+video,
+object {
+    max-width: 100%
+}

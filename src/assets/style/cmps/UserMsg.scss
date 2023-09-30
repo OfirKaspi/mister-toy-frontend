@@ -1,0 +1,38 @@
+.user-msg {
+    background-color: $bgcPrimary1-dark;
+    padding: .2em .5em;
+    position: fixed;
+    bottom: 0;
+    right: 1em;
+    color: $white;
+    border-radius: 4px;
+
+    &>.success {
+        background-color: $clrPrimary1;
+    }
+
+    &.error {
+        background-color: $clrPrimary2;
+    }
+
+    & button {
+        font-size: .5em;
+        float: right;
+        margin: .5em;
+    }
+
+}
+
+// .user-msg.success {
+//     background-color: $clrPrimary1;
+// }
+
+// .user-msg.error {
+//     background-color: $clrPrimary2;
+// }
+
+// .user-msg button {
+//     font-size: .5em;
+//     float: right;
+//     margin: .5em;
+// }

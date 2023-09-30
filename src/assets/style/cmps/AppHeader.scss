@@ -1,0 +1,93 @@
+header {
+  width: 100%;
+  color: white;
+
+  &>.secondary-header-container {
+    background-color: $bgcPrimary1-dark;
+    padding: 0.5em;
+
+    &>span {
+      padding: 0 10px;
+    }
+
+    & .phone-container,
+    & .login-container {
+      color: white;
+      padding: 0 10px;
+      gap: 10px;
+    }
+
+    & .login-container {
+      border-inline-start: 1px solid white;
+    }
+
+  }
+
+  &>.main-header-container {
+    background-color: $bgcPrimary1;
+    padding: 1em;
+    width: 100%;
+    gap: 2em;
+
+    &>.app-name {
+      color: $clrPrimary1;
+      text-shadow: $clrPrimary2 1px 2px 3px;
+    }
+
+    & a {
+      margin: 0 5px;
+      font-size: 1.25rem;
+      width: fit-content;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: $clrPrimary2 1px 2px 3px;
+    }
+  }
+}
+
+// .secondary-header-container {
+//   background-color: $bgcPrimary1-dark;
+//   padding: 0.5em;
+// }
+
+// .secondary-header-container>span {
+//   padding: 0 10px;
+// }
+
+// .login-container {
+//   border-inline-start: 1px solid white;
+// }
+
+// .phone-container,
+// .login-container {
+//   color: white;
+//   padding: 0 10px;
+//   gap: 10px;
+// }
+
+// .main-header-container {
+//   background-color: $bgcPrimary1;
+//   padding: 1em;
+//   width: 100%;
+//   gap: 2em;
+// }
+
+// .app-name {
+//   color: $clrPrimary1;
+//   text-shadow: $clrPrimary2 1px 2px 3px;
+// }
+
+// .header-nav>a {
+//   margin: 0 5px;
+//   font-size: 1.25rem;
+//   width: fit-content;
+//   height: 100%;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   color: white;
+//   text-shadow: $clrPrimary2 1px 2px 3px;
+// }

@@ -15,6 +15,9 @@ export function ToyIndex() {
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
     const sortBy = useSelector(storeState => storeState.toyModule.sortBy)
+    const currPage = useSelector(storeState => storeState.toyModule.currPage)
+
+    console.log(currPage);
 
     // something causing many re-rendering 
     console.log('Outside');

@@ -5,7 +5,7 @@ export const REMOVE_TOY = 'REMOVE_TOY'
 export const ADD_TOY = 'ADD_TOY'
 export const UPDATE_TOY = 'UPDATE_TOY'
 
-export const CHANGE_BY = 'CHANGE_BY'
+export const CHANGE_PAGE = 'CHANGE_PAGE'
 
 export const SET_SORT_BY = 'SET_SORT_BY'
 export const SET_FILTER_BY = 'SET_FILTER_BY'
@@ -14,19 +14,15 @@ export const SET_IS_LOADING = 'SET_IS_LOADING'
 
 const initialState = {
     toys: [],
-    count: 101,
     filterBy: toyService.getDefaultFilter(),
     isLoading: false,
-    sortBy: ''
+    sortBy: '',
+    currPage: 1
 }
 
 export function toyReducer(state = initialState, action = {}) {
     let toys
     switch (action.type) {
-
-        // Just a tryout in the home page
-        case CHANGE_BY:
-            return { ...state, count: state.count + action.diff }
 
         // Toys
         case SET_TOYS:
@@ -44,6 +40,9 @@ export function toyReducer(state = initialState, action = {}) {
             toys = state.toys.map(toy => toy._id === action.toy._id ? action.toy : toy)
             return { ...state, toys }
 
+        case CHANGE_PAGE:
+            return { ...state, currPage: action.currPage }
+
         case SET_FILTER_BY:
             return { ...state, filterBy: { ...action.filterBy } }
 
@@ -52,6 +51,7 @@ export function toyReducer(state = initialState, action = {}) {
 
         case SET_IS_LOADING:
             return { ...state, isLoading: action.isLoading }
+
 
         default:
             return state;

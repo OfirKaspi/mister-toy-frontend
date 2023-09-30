@@ -1,13 +1,13 @@
 .toy-list {
+    row-gap: 25px;
     column-gap: 25px;
     columns: 3 200px;
-    margin-bottom: 25px;
 
     &>.toy-preview {
         margin-bottom: 25px;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
     }
 }
-
-// .toy-preview {
-//     margin-bottom: 25px;
-// }

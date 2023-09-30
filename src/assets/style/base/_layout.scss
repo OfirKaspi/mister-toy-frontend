@@ -1,3 +1,13 @@
+#root {
+    min-height: 100vh;
+    position: relative;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: auto;
+    margin: 0;
+    background-color: #ebebeb;
+}
+
 .home-page {
     margin: 50px 25px 25px;
 }

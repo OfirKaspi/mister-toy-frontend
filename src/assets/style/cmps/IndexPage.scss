@@ -2,6 +2,10 @@
     margin: 25px;
     max-width: 1200px;
 
+    &>.index-container {
+        margin-bottom: 25px;
+    }
+
     &>.pagination-container {
         gap: 0.25rem;
 
@@ -12,5 +16,3 @@
         }
     }
 }
-
-// .pagination {}

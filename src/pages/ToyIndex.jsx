@@ -79,7 +79,7 @@ export function ToyIndex() {
                     <button className='btn full-btn' onClick={onNavToEdit}>Add Toy</button>
                     <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} onSetSort={onSetSort} />
                 </aside>
-                <main>
+                <section>
                     {!isLoading &&
                         <ToyList
                             toys={toys}
@@ -91,7 +91,7 @@ export function ToyIndex() {
 
                     {isLoading && <div>Loading...</div>}
 
-                </main>
+                </section>
             </div>
             {!isLoading && <div className='pagination-container flex align-center justify-center'>
                 <span className='btn' onClick={() => handlePageChange(-1)}>-</span>

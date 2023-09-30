@@ -2,10 +2,6 @@ import { Route, HashRouter as Router, Routes } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import './assets/style/main.scss'
 
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-
 import { store } from './store/store'
 import { AppHeader } from './cmps/AppHeader'
 import { HomePage } from './pages/HomePage'
@@ -19,7 +15,6 @@ import { Signup } from './pages/Signup'
 import { Dashboard } from './pages/Dashboard'
 
 export function App() {
-
     return (
         <Provider store={store}>
             <Router>
@@ -45,5 +40,6 @@ export function App() {
         </Provider>
     )
 }
+
 
 export default App

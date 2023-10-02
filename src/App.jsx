@@ -25,8 +25,8 @@ export function App() {
                     <Routes>
                         <Route element={<HomePage />} path="/" />
                         <Route element={<Dashboard />} path="/dashboard" />
-                        <Route element={<Login />} path="/login" />
-                        <Route element={<Signup />} path="/signup" />
+                        <Route element={<Login />} path="/auth/login" />
+                        <Route element={<Signup />} path="/auth/signup" />
                         <Route element={<AboutPage />} path="/about" />
                         <Route element={<ToyIndex />} path="/toy" />
                         <Route element={<ToyDetails />} path="/toy/:toyId" />

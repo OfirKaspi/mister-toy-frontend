@@ -24,19 +24,18 @@ export function Signup() {
 
     async function onSubmit(ev) {
         ev.preventDefault()
-        if (isSignupState) {
-            try {
-                const user = await signup(credentials)
-                showSuccessMsg(`Welcome ${user.fullname}`)
-            } catch (err) {
-                showErrorMsg('Cannot signup')
-            }
+        try {
+            const user = await signup(credentials)
+            showSuccessMsg(`Welcome ${user.fullname}`)
+            navigate('/toy')
+        } catch (err) {
+            showErrorMsg('Cannot signup')
         }
     }
 
     const { username, password, fullname } = credentials
 
-    const paperStyle = { padding: 20, minHeight: '50vh', width: 300, margin: '50px 0 75px 0' }
+    const paperStyle = { padding: 20, width: 300, margin: '50px 0 75px 0' }
     const avatarStyle = { backgroundColor: '#0077e0' }
     const marginStyle = { margin: '15px 0' }
 
@@ -81,11 +80,11 @@ export function Signup() {
                     {/* <TextField label='Confirm Password' placeholder="Enter password" type="password" variant="standard" fullWidth required /> */}
                     {/* <FormControlLabel control={<Checkbox defaultChecked />} label="Remember me" /> */}
                     <Button type="submit" color="primary" variant="contained" style={marginStyle} fullWidth>Register</Button>
-                    <Typography>
-                        Do you have an account ?
-                        <Link underline="hover" onClick={() => navigate('/login')}> Sign in</Link>
-                    </Typography>
                 </form>
+                <Typography>
+                    Do you have an account ?
+                    <Link underline="hover" onClick={() => navigate('/auth/login')}> Sign in</Link>
+                </Typography>
             </Paper>
         </Grid>
     )
